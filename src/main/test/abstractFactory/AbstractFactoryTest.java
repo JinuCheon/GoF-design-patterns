@@ -7,8 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /// - [v] 새벽배송은 보온 박스에 포장된다
 /// - [v] 다음날배송은 골판지 박스에 포장된다
-/// - [] 새벽배송은 "Quick Delivery Label" 라는 라벨이 출력된다
-/// - [] 다음날배송은 "Common Label" 라는 라벨이 출력된다
+/// - [v] 새벽배송은 "Quick Delivery Label" 라는 라벨이 출력된다
+/// - [v] 다음날배송은 "Common Label" 라는 라벨이 출력된다
+/// - [] 밖으로 튀어나온 String 들을 Enum 으로 정리
 public class AbstractFactoryTest {
 
     @Test

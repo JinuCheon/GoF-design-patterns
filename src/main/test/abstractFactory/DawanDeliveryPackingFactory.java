@@ -5,4 +5,9 @@ public class DawanDeliveryPackingFactory implements DeliveryPackingFactory {
     public Box createBox() {
         return new HermalBox();
     }
+
+    @Override
+    public Label createLabel() {
+        return new QuickDeliveryLabel();
+    }
 }

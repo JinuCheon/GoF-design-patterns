@@ -12,4 +12,9 @@ public class PackingClient {
         final Box box = deliveryPackingFactory.createBox();
         return box.boxType();
     }
+
+    public String label() {
+        final Label label = deliveryPackingFactory.createLabel();
+        return label.content();
+    }
 }

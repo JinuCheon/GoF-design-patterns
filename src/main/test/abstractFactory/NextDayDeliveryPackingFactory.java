@@ -5,4 +5,9 @@ public class NextDayDeliveryPackingFactory implements DeliveryPackingFactory {
     public Box createBox() {
         return new CardboardBox();
     }
+
+    @Override
+    public Label createLabel() {
+        return new CommonLabel();
+    }
 }
