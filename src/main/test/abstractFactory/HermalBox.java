@@ -2,7 +2,7 @@ package main.test.abstractFactory;
 
 public class HermalBox implements Box {
     @Override
-    public String boxType() {
-        return "Hermal Box";
+    public BoxType boxType() {
+        return BoxType.Hermal;
     }
 }

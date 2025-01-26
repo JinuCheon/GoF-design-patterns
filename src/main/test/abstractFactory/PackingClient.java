@@ -8,7 +8,7 @@ public class PackingClient {
         this.deliveryPackingFactory = deliveryPackingFactory;
     }
 
-    public String boxType() {
+    public BoxType boxType() {
         final Box box = deliveryPackingFactory.createBox();
         return box.boxType();
     }

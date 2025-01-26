@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /// - [v] 다음날배송은 골판지 박스에 포장된다
 /// - [v] 새벽배송은 "Quick Delivery Label" 라는 라벨이 출력된다
 /// - [v] 다음날배송은 "Common Label" 라는 라벨이 출력된다
-/// - [] 밖으로 튀어나온 String 들을 Enum 으로 정리
+/// - [v] 밖으로 튀어나온 String 들을 Enum 으로 정리
 public class AbstractFactoryTest {
 
     @Test
@@ -18,8 +18,8 @@ public class AbstractFactoryTest {
         PackingClient dawnDeliveryPackingClient = new PackingClient(new DawanDeliveryPackingFactory());
         PackingClient nextDayDeliveryPackingClient = new PackingClient(new NextDayDeliveryPackingFactory());
 
-        assertEquals(dawnDeliveryPackingClient.boxType(), "Hermal Box");
-        assertEquals(nextDayDeliveryPackingClient.boxType(), "Cardboard Box");
+        assertEquals(dawnDeliveryPackingClient.boxType(), BoxType.Hermal);
+        assertEquals(nextDayDeliveryPackingClient.boxType(), BoxType.Cardboard);
     }
 
     @Test
