@@ -5,6 +5,10 @@ public interface DeliveryPackingFactory {
         return new DawanDeliveryPackingFactory();
     }
 
+    static NextDayDeliveryPackingFactory forNextDay() {
+        return new NextDayDeliveryPackingFactory();
+    }
+
     Box createBox();
 
     Label createLabel();
