@@ -1,9 +1,15 @@
 package main.test.abstractFactory;
 
 public class PackingClient {
-    public PackingClient(final DawanDeliveryPackingFactory dawanDeliveryPackingFactory) {}
+
+    private final DeliveryPackingFactory deliveryPackingFactory;
+
+    public PackingClient(final DeliveryPackingFactory deliveryPackingFactory) {
+        this.deliveryPackingFactory = deliveryPackingFactory;
+    }
 
     public String boxType() {
-        return "Hermal Box";
+        final Box box = deliveryPackingFactory.createBox();
+        return box.boxType();
     }
 }
