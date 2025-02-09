@@ -4,13 +4,17 @@ import java.util.List;
 
 public class Order {
 
-    private final List<OrderItem> items;
+    private final List<Item> items;
 
-    private Order(final List<OrderItem> items) {
+    private Order(final List<Item> items) {
         this.items = items;
     }
 
-    public static Order with(final List<OrderItem> foodItems) {
+    public static Order with(final List<Item> foodItems) {
         return new Order(foodItems);
+    }
+
+    public List<Item> items() {
+        return items;
     }
 }

@@ -3,10 +3,10 @@ package main.test.factoryMethod;
 import main.factoryMethod.Delivery;
 import main.factoryMethod.ElectronicsDelivery;
 import main.factoryMethod.FoodDelivery;
-import main.factoryMethod.LivingDelivery;
+import main.factoryMethod.CommonDelivery;
 import main.factoryMethod.MigrateDeliveryUseCase;
 import main.factoryMethod.Order;
-import main.factoryMethod.OrderItem;
+import main.factoryMethod.Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,34 +26,44 @@ public class FactoryMethodTest {
                 createLivingItem()
         ));
 
-        List<Delivery> deliveries = sut.migrate(order);
+        List<Delivery> deliveries = sut.migrateFoodDeliveries(order);
 
-        Assertions.assertEquals(2, countFoodDelivery(deliveries));
-        Assertions.assertEquals(1, countElectronicsDelivery(deliveries));
-        Assertions.assertEquals(1, countLivingDelivery(deliveries));
+        Assertions.assertEquals(2, countFoodDeliveryItems(deliveries));
+        Assertions.assertEquals(1, countElectronicsDeliveryItems(deliveries));
+        Assertions.assertEquals(1, countLivingDeliveryItems(deliveries));
     }
 
-    private Long countLivingDelivery(final List<Delivery> deliveries) {
-        return deliveries.stream().filter(delivery -> delivery instanceof LivingDelivery).count();
+    private Long countLivingDeliveryItems(final List<Delivery> deliveries) {
+        return deliveries.stream()
+                .filter(delivery -> delivery instanceof CommonDelivery)
+                .map(Delivery::itemQty)
+                .reduce(0L, Long::sum);
+
     }
 
-    private Long countElectronicsDelivery(final List<Delivery> deliveries) {
-        return deliveries.stream().filter(delivery -> delivery instanceof ElectronicsDelivery).count();
+    private Long countElectronicsDeliveryItems(final List<Delivery> deliveries) {
+        return deliveries.stream()
+                .filter(delivery -> delivery instanceof ElectronicsDelivery)
+                .map(Delivery::itemQty)
+                .reduce(0L, Long::sum);
     }
 
-    private Long countFoodDelivery(final List<Delivery> deliveries) {
-        return deliveries.stream().filter(delivery -> delivery instanceof FoodDelivery).count();
+    private Long countFoodDeliveryItems(final List<Delivery> deliveries) {
+        return deliveries.stream()
+                .filter(delivery -> delivery instanceof FoodDelivery)
+                .map(Delivery::itemQty)
+                .reduce(0L, Long::sum);
     }
 
-    private OrderItem createLivingItem() {
-        return OrderItem.createAsLiving(1);
+    private Item createLivingItem() {
+        return Item.createAsLiving(1);
     }
 
-    private OrderItem createElectronicsItem() {
-        return OrderItem.createAsElectronics(1);
+    private Item createElectronicsItem() {
+        return Item.createAsElectronics(1);
     }
 
-    private OrderItem createFoodItem() {
-        return OrderItem.createAsFoods(1);
+    private Item createFoodItem() {
+        return Item.createAsFoods(1);
     }
 }

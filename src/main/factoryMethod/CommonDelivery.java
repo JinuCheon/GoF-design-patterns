@@ -2,16 +2,16 @@ package main.factoryMethod;
 
 import java.util.List;
 
-public class ElectronicsDelivery implements Delivery {
+public class CommonDelivery implements Delivery {
 
     private final List<Item> items;
 
-    public ElectronicsDelivery(final List<Item> items) {
+    public CommonDelivery(final List<Item> items) {
         this.items = items;
     }
 
-    public static Delivery from(final List<Item> electronicsItems) {
-        return new ElectronicsDelivery(electronicsItems);
+    public static Delivery from(final List<Item> commonItems) {
+        return new CommonDelivery(commonItems);
     }
 
     @Override
