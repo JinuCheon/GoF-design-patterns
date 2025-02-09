@@ -19,12 +19,12 @@ public class FactoryMethodTest {
     @DisplayName("커머스 주문을 받아서, 아이템 별로 배송을 나눠서 처리한다.")
     public void migrateOrderToDelivery() {
         MigrateDeliveryUseCase sut = new MigrateDeliveryUseCase();
-        Order order = Order.with(
+        Order order = Order.with(List.of(
                 createFoodItem(),
                 createFoodItem(),
                 createElectronicsItem(),
                 createLivingItem()
-        );
+        ));
 
         List<Delivery> deliveries = sut.migrate(order);
 
@@ -54,6 +54,6 @@ public class FactoryMethodTest {
     }
 
     private OrderItem createFoodItem() {
-        return OrderItem.createAsFoods();
+        return OrderItem.createAsFoods(1);
     }
 }
