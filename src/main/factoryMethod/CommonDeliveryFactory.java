@@ -2,11 +2,11 @@ package main.factoryMethod;
 
 import java.util.List;
 
-public class CommonDeliveryFactory {
+public class CommonDeliveryFactory implements DeliveryFactory {
     public CommonDeliveryFactory() {
     }
 
-    MigrationResult migrate(final List<Item> remainedItems) {
+    public MigrationResult migrate(final List<Item> remainedItems) {
         return new MigrationResult(CommonDelivery.from(remainedItems), List.of());
     }
 }

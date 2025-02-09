@@ -2,7 +2,7 @@ package main.factoryMethod;
 
 import java.util.List;
 
-public class ElectronicDeliveryFactory {
+public class ElectronicDeliveryFactory implements DeliveryFactory {
     public ElectronicDeliveryFactory() {
     }
 

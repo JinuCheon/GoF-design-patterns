@@ -2,11 +2,11 @@ package main.factoryMethod;
 
 import java.util.List;
 
-public class FoodDeliveryFactory {
+public class FoodDeliveryFactory implements DeliveryFactory {
     public FoodDeliveryFactory() {
     }
 
-    MigrationResult migrate(final List<Item> items) {
+    public MigrationResult migrate(final List<Item> items) {
         final List<Item> foodItems = items.stream()
                 .filter(Item::isFood)
                 .toList();
