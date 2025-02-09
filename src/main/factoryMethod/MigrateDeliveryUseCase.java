@@ -5,8 +5,8 @@ import java.util.List;
 public class MigrateDeliveryUseCase {
     public List<Delivery> migrateFoodDeliveries(final Order order) {
         final MigrationResult afterFoodMigrate = migrateFoodDeliveries(order.items());
-        final MigrationResult afterElectronicsMigrate = migrateElectronicsDeliveries(afterFoodMigrate.remainedItems);
-        final MigrationResult afterCommonMigrate = migrateOthers(afterElectronicsMigrate.remainedItems);
+        final MigrationResult afterElectronicsMigrate = migrateElectronicsDeliveries(afterFoodMigrate.remainedItems());
+        final MigrationResult afterCommonMigrate = migrateOthers(afterElectronicsMigrate.remainedItems());
 
         return List.of(
                 afterFoodMigrate.delivery(),
@@ -39,6 +39,4 @@ public class MigrateDeliveryUseCase {
         return new MigrationResult(FoodDelivery.from(foodItems), remainedItems);
     }
 
-    private record MigrationResult(Delivery delivery, List<Item> remainedItems) {
-    }
 }
