@@ -19,5 +19,5 @@
 - 객체 생성의 책임이 Factory Method를 가진 클래스로 이동함으로써, 클라이언트가 특정 구현을 직접 알 필요 없음.
 - 단 하나의 ConcreteProduct를 생성하기 위해 새로운 ConcreteCreator를 만들어야 할 수 있음.
 - 구체적인 인스턴스 생성은 서브클래스에서 결정.
-- factory method 르 subclass 애 대한 hook 매서드를 제공한다고도 하는 듯.
 - Creator 가 추상클래스일 수도 있고, 구현클래스로 기본 매서드를 구현할 수 있음
+  - 선택적으로 override 할 수 있는 hook 매서드를 제공한다고도 하는데 동일한 의미인가 싶음.
