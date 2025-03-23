@@ -14,7 +14,7 @@ class ProductServiceTest {
     @BeforeEach
     void setUp() {
         productRepository = new ProductRepository();
-        productService = new ProductServiceImpl(productRepository);
+        productService = new ProductServiceCachable(new ProductServiceImpl(productRepository));
 
         productRepository.save(new Product(1L, "낚시대", 10000));
     }
